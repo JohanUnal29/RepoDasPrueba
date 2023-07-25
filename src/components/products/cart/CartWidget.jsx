@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../context/CartContext';
-import '../../subcomponents/navbar/Navbar';
 import { FaShoppingCart } from 'react-icons/fa';
 import ModalCart from './ModalCart';
 

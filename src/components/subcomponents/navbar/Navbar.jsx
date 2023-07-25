@@ -66,7 +66,7 @@ export default function NavBar() {
                     <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
                         <Nav.Link><Link className="Menu" to="/">Inicio</Link></Nav.Link>
                         <Nav.Link><Link className="Menu" to="/products">Productos</Link></Nav.Link>
-                        <Nav.Link className="Menu" target="_blank" href="https://www.instagram.com/dasein.accesorios/?igshid=Yzg5MTU1MDY%3D">Ir a @dasein.outfit</Nav.Link>
+                        <Nav.Link className="Menu" target="_blank" href="https://www.instagram.com/dasein.accesorios/?igshid=Yzg5MTU1MDY%3D">Ir a @dasein.accesorios</Nav.Link>
                         <Nav.Link><CartWidget></CartWidget></Nav.Link>
                         {
                             veri === false &&

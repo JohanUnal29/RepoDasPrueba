@@ -3,6 +3,7 @@ import { Modal, Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { CartContext } from '../../../context/CartContext';
 import axios from "axios";
 import Carrito from './Carrito';
+import { Link } from 'react-router-dom';
 
 export default function ModalCart(props) {
 
@@ -40,10 +41,6 @@ export default function ModalCart(props) {
         setPhone("");
         setMessage("");
         vaciarCarrito();
-    };
-
-    const abrirModalInsertar = () => {
-        setModalInsertar(true);
     };
 
     const handleVaciar = () => {
@@ -89,13 +86,11 @@ export default function ModalCart(props) {
                         </Col>
                         <Col xs={6} md={4}>
                             <h6>Total: ${precioTotal()}</h6>
-                            <label>Name</label>
                         </Col>
                         <Col xs={6} md={4}>
                             <Button variant='success' onClick={() => {
-                                abrirModalInsertar();
                                 props.onHide();
-                            }}>Comprar</Button>
+                            }}><Link className="Menu" to="/checkout">Comprar</Link></Button>
                         </Col>
                     </Row>
                 </Container>
@@ -104,66 +99,6 @@ export default function ModalCart(props) {
                 <Button variant='danger' onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
-
-            <Modal show={modalInsertar} onHide={() => setModalInsertar(false)}>
-                <Modal.Header>
-                    <Modal.Title>Ordenar</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-
-                    <h5>Orden</h5>
-
-                    <div className="form-group">
-
-                        <label>Name</label>
-                        <input
-                            className="form-control"
-                            placeholder="Name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)} />
-                        <br />
-
-                        <label>Email</label>
-                        <input
-                            className="form-control"
-                            placeholder="Email"
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} />
-                        <br />
-
-                        <label>Phone</label>
-                        <input
-                            className="form-control"
-                            placeholder="Phone"
-                            type="text"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)} />
-                        <br />
-
-                        <label>Sugerencias</label>
-                        <textarea
-                            className="form-control"
-                            placeholder="Message"
-                            type="text"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)} />
-                        <br />
-
-                    </div>
-
-                    <Modal.Footer>
-                        <Button type="button" variant="success" onClick={() => {
-                            handleSubmit();
-                            setModalInsertar(false);
-                        }}>Comprar
-                        </Button>
-                        <Button variant="danger" onClick={() => setModalInsertar(false)}>
-                            Cancelar
-                        </Button>
-                    </Modal.Footer>
-                </Modal.Body>
-            </Modal></>
+</>
     );
 }

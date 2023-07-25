@@ -6,7 +6,6 @@ import axios from "axios";
 import { FaThermometerEmpty } from 'react-icons/fa';
 
 const Product = ({ product }) => {
-  console.log(product);
 
   const [userLogin, setUserLogin] = useState([]);
 
@@ -35,12 +34,12 @@ const Product = ({ product }) => {
   };
 
 
-
+  const imgurl = "https://drive.google.com/uc?export=download&id=";
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [code, setCode] = useState("");
   const [price, setPrice] = useState("");
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState("");
   const [stock, setStock] = useState();
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
@@ -50,7 +49,7 @@ const Product = ({ product }) => {
   const [description2, setDescription2] = useState("");
   const [code2, setCode2] = useState("");
   const [price2, setPrice2] = useState("");
-  const [status2, setStatus2] = useState();
+  const [status2, setStatus2] = useState("");
   const [stock2, setStock2] = useState();
   const [category2, setCategory2] = useState("");
   const [subCategory2, setSubCategory2] = useState("");
@@ -85,10 +84,15 @@ const Product = ({ product }) => {
     setThumbnails2("");
   };
 
+  console.log(category2);
+  console.log(subCategory2);
   const addProduct = async () => {
 
     try {
 
+
+      console.log(category2);
+      console.log(subCategory2);
       const add = {
         title: title2,
         description: description2,
@@ -98,8 +102,9 @@ const Product = ({ product }) => {
         stock: stock2,
         category: category2,
         subCategory: subCategory2,
-        thumbnails: thumbnails2,
+        thumbnails: imgurl + thumbnails2,
       };
+      console.log("producto agregado: " + JSON.stringify(add));
       axios.post("/api/products/addproduct", add).then(res => {
         alert("producto agregado");
       }).catch(err => {
@@ -170,11 +175,11 @@ const Product = ({ product }) => {
             </Button>
             {userLogin.admin &&
               <>
-              <br/>
-              <br />
-              <Button variant="danger" onClick={() => deleteProduct(product._id)}>
-                Eliminar producto
-              </Button>
+                <br />
+                <br />
+                <Button variant="danger" onClick={() => deleteProduct(product._id)}>
+                  Eliminar producto
+                </Button>
                 <br />
                 <br />
                 <Button variant='success' onClick={() => { abrirModalInsertar(); }}>
@@ -269,21 +274,22 @@ const Product = ({ product }) => {
             <br />
 
             <label>Categoria</label>
-            <input
-              className="form-control"
-              placeholder="Categoria"
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)} />
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="Aretes">Aretes</option>
+              <option value="Cadenas">Cadenas</option>
+              <option value="Pulseras">Pulseras</option>
+              <option value="Anillos">Anillos</option>
+              <option value="Earcuff">Earcuff</option>
+              <option value="Joyeros">Joyeros</option>
+            </select>
+
             <br />
 
             <label>Subcategoria</label>
-            <input
-              className="form-control"
-              placeholder="Subcategoria"
-              type="text"
-              value={subCategory}
-              onChange={(e) => setSubCategory(e.target.value)} />
+            <select value={subCategory} onChange={(e) => setSubCategory(e.target.value)}>
+              <option value="JoyerosPequeños">JoyerosPequeños</option>
+              <option value="JoyerosGrandes">JoyerosGrandes</option>
+            </select>
             <br />
 
             <label>Imagen</label>
@@ -365,21 +371,22 @@ const Product = ({ product }) => {
             <br />
 
             <label>Categoria</label>
-            <input
-              className="form-control"
-              placeholder="Categoria"
-              type="text"
-              value={category2}
-              onChange={(e) => setCategory2(e.target.value)} />
+            <select value={category2} onChange={(e) => setCategory2(e.target.value)}>
+              <option value="Aretes">Aretes</option>
+              <option value="Cadenas">Cadenas</option>
+              <option value="Pulseras">Pulseras</option>
+              <option value="Anillos">Anillos</option>
+              <option value="Earcuff">Earcuff</option>
+              <option value="Joyeros">Joyeros</option>
+            </select>
+
             <br />
 
             <label>Subcategoria</label>
-            <input
-              className="form-control"
-              placeholder="Subcategoria"
-              type="text"
-              value={subCategory2}
-              onChange={(e) => setSubCategory2(e.target.value)} />
+            <select value={subCategory2} onChange={(e) => setSubCategory2(e.target.value)}>
+              <option value="JoyerosPequeños">JoyerosPequeños</option>
+              <option value="JoyerosGrandes">JoyerosGrandes</option>
+            </select>
             <br />
 
             <label>Imagen</label>

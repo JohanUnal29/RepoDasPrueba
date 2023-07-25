@@ -8,6 +8,7 @@ import Carrito from './components/products/cart/Carrito';
 import OrderListContainer from './components/orders/orderContainer/OrderListContainer';
 import { CartProvider } from './context/CartContext';
 import OrderDetailContainer from './components/orders/orderDetailContainer/OrderDetailContainer';
+import Checkout from './components/products/cart/Checkout';
 
 // import ItemDetailContainer from "./components/Adopt/ItemDetailContainer";
 // import Request from './components/request/Request';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/orders" element={<OrderListContainer />} />
             <Route path="/orders/:status" element={<OrderListContainer />} />
             <Route path="/orderr/:id" element={<OrderDetailContainer/>} />
+            <Route path="/checkout" element={<Checkout/>} />
             {/* <Route path="/carrito" element={<Carrito />} /> */}
             {/* <Route exact path='/adopta' element={<ItemListContainer />} />
           <Route path="/adopta/:categoria" element={<ItemListContainer />} />
